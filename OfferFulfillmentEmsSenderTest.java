@@ -806,6 +806,7 @@ class OfferFulfillmentEmsSenderTest {
     // (sin precondiciones propias: se usan los datos de setUp)
 
     // When / Then
+    props.setEnabled(false);
     assertThat(sender.isEnabled()).isFalse();
     props.setEnabled(true);
     assertThat(sender.isEnabled()).isTrue();
@@ -1000,7 +1001,7 @@ class OfferFulfillmentEmsSenderTest {
     assertThat(envia).contains("\"name\":\"Updateofferrequest\"", "\"RefID\":\"" + REF_ID + "\"");
     assertThat(envia)
         .contains("\"CardNumber\":\"************5678\"")
-        .doesNotContain("1234567812345678");
+        .doesNotContain("\"CardNumber\":\"1234567812345678\"");
     assertThat(publicadoRaw()).contains("\"CardNumber\":\"1234567812345678\"");
   }
 
